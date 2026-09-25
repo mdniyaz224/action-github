@@ -4,10 +4,10 @@ jobs:
   hello-jobs:
     runs-on: ubuntu-latest
     steps:
-      -name: "welcome"
-      run: echo "run this job through gitbub action"
+      - name: "welcome"
+        run: echo "run this job through GitHub Actions"
   bye-job:
     runs-on: ubuntu-latest
     steps:
-      -name: "bye"
-      run: echo"bye bye bye 2nd job"
+      - name: "bye"
+        run: echo "bye bye bye 2nd job"

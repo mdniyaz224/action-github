@@ -1,5 +1,5 @@
 name: validate files
-on: workflow_dispatch
+on: push
 jobs:
   validate-file:
     runs-on: ubuntu-latest

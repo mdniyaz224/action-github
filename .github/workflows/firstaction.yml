@@ -2,11 +2,11 @@ name: 1st github action
 on: push
 jobs:
   first-job:
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
-      -name: Hello github action
-       run: echo"Hello this is Niyaz"
-      -name: by github action
-       run: echo" by git hub action"
-      
+      - name: Hello github action
+        run: echo "Hello this is Niyaz"
+      - name: by github action
+        run: echo " by git hub action"
+
 

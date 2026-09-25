@@ -1,5 +1,9 @@
 name: jobbs test
-on: push
+on: 
+  workflow_run:
+    workflows: [validate files]
+    types: 
+      - completed
 jobs:
   validate-file:
     runs-on: ubuntu-latest

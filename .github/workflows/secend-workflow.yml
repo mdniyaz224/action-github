@@ -1,5 +1,5 @@
 name: second work flow test
-on: push
+on: workflow_dispatch
 jobs:
   hello-jobs:
     runs-on: ubuntu-latest

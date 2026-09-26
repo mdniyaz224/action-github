@@ -36,3 +36,4 @@ jobs:
         uses: amondnet/vercel-action@v25
         with:
           vercel-token: ${{ secrets.VERCAL_TOKEN }}
+          vercel-args: '--prod'

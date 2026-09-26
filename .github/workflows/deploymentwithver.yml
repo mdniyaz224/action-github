@@ -1,0 +1,38 @@
+name: "vercel deployment"
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: install dependency
+        run: npm ci
+
+      - name: lint code
+        run: npm run lint
+
+      - name: run test cases
+        run: CI=true npm test -- --watch=false
+
+      - name: make react build
+        run: npm run build
+
+      - name: deploy to vercel
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCAL_TOKEN }}

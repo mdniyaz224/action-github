@@ -1,0 +1,28 @@
+name: "eslint test work flow"
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: install dependency
+        run: npm ci
+
+      - name: lint code
+        run: npm run lint
+
+      - name: make react build
+        run: npm run build
+

@@ -23,6 +23,9 @@ jobs:
       - name: lint code
         run: npm run lint
 
+      - name: run test cases
+        run: CI=true npm test -- --watch=false
+
       - name: make react build
         run: npm run build
 

@@ -9,6 +9,6 @@ test('renders app heading', () => {
 
 test('renders welcome message', () => {
   render(<App />);
-  const message = screen.getByText(/welcome to the ci demo app/i);
+  const message = screen.getByText(/build, test, deploy, and ship with confidence/i);
   expect(message).toBeInTheDocument();
 });

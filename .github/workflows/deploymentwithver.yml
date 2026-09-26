@@ -7,7 +7,7 @@ on:
   pull_request:
 
 jobs:
-  build-and-deploy:
+  build-and-validate:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -31,9 +31,22 @@ jobs:
       - name: make react build
         run: npm run build
 
+  deploy-to-vercel:
+    needs: build-and-validate
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
       - name: install vercel cli
         run: npm install --global vercel
 
       - name: deployment on vercel
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: vercel --prod --yes --token="${{ secrets.VERCAL_TOKEN }}"

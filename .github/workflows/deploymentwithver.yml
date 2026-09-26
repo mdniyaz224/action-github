@@ -7,7 +7,7 @@ on:
   pull_request:
 
 jobs:
-  first-job:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -31,9 +31,9 @@ jobs:
       - name: make react build
         run: npm run build
 
-      - name: deploy to vercel
+      - name: install vercel cli
+        run: npm install --global vercel
+
+      - name: deployment on vercel
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        uses: amondnet/vercel-action@v25
-        with:
-          vercel-token: ${{ secrets.VERCAL_TOKEN }}
-          vercel-args: '--prod'
+        run: vercel --prod --yes --token="${{ secrets.VERCAL_TOKEN }}"

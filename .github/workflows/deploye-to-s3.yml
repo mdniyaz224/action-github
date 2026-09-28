@@ -35,4 +35,4 @@ jobs:
       - name: Upload build to S3
         # env:
         #   S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-        run: aws s3 sync build/ "s3://${S3_BUCKET}/"
+        run: aws s3 sync build/ "s3://${secrets.S3_BUCKET} --delete"

@@ -6,7 +6,7 @@ function App() {
       <main className="hero">
         <div className="hero-content">
           <p className="eyebrow">CI/CD demo</p>
-          <h1>Action GitHub</h1>
+          <h1>Action GitHub by Niyaz</h1>
           <p className="subtitle">
             Build, test, deploy, and ship with confidence.
           </p>
